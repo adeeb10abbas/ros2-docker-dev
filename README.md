@@ -19,7 +19,7 @@ Finally, run the Docker container with the necessary flags:
 ```
 docker run -it --rm -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix --privileged ros-mac
 ```
-Please note that running the container with --privileged can expose your system to security risks. Use this flag only if you understand the implications and trust the container you're running.
+Please note that running the container with `--privileged` can expose your system to security risks. Use this flag only if you understand the implications and trust the container you're running.
 
 This is under active development, so please feel free to contribute to the project. If you have any questions, please open an issue on the GitHub repo. Thanks!
 
