@@ -1,25 +1,31 @@
 # ros2-docker-dev
 
-To build the image, save the Dockerfile and run the following command in the same directory:
-
-`docker build -t ros-mac .`
-
-To run the container with X11 forwarding, first install XQuartz on your M1 Mac:
-`brew install xquartz`
-
-Launch XQuartz, and enable "Allow connections from network clients" in the Preferences > Security settings. Restart XQuartz for the changes to take effect.
-
-Now, get your local IP address and allow XQuartz to accept connections from it:
+Add the following to your `~/.bashrc` or `~/.zshrc` file to use the `ros_dev` command:
 
 ```
-ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-xhost + $ip
+ros_dev() {
+  # Check if the correct number of arguments were provided
+  if (( $# % 2 != 0 )); then
+    echo "Usage: ros_dev <container_name1> <project_path1> [<container_name2> <project_path2> ...]"
+    return 1
+  fi
+
+  while (( $# >= 2 )); do
+    # Set environment variables
+    ROS_DEV_CONTAINER_NAME=$1
+    ROS_PROJECT_PATH=$2
+    shift 2
+
+    # Run docker-compose from the correct directory
+    cd $HOME/ros2-docker-dev && docker-compose up -d --build
+  done
+}
+
 ```
-Finally, run the Docker container with the necessary flags:
+If you have multiple workspaces you would like to concurrently build in a single command with corresponding workspaces, use the following - 
 ```
-docker run -it --rm -e DISPLAY=$ip:0 -v /tmp/.X11-unix:/tmp/.X11-unix --privileged ros-mac
+ros_dev my_ros_container1 /path/to/my/ros/project1 my_ros_container2 /path/to/my/ros/project2
 ```
-Please note that running the container with `--privileged` can expose your system to security risks. Use this flag only if you understand the implications and trust the container you're running.
 
 This is under active development, so please feel free to contribute to the project. If you have any questions, please open an issue on the GitHub repo. Thanks!
 

@@ -1,0 +1,35 @@
+# docker-compose.yml
+# 
+# NOTE - Only necessary for machines without an Nvidia GPU
+# This Docker Compose configuration sets up a Drake ROS integration environment
+# along with a noVNC server for remote access to the graphical interface of any
+# visualization tools used in the project.
+#
+# Author: Adeeb Abbas
+
+version: '3.8'
+services:
+  ros_dev_env:
+    container_name: ${ROS_DEV_CONTAINER_NAME}
+    image: ros_dev_image
+    build: ./
+    volumes: 
+      - ${ROS_PROJECT_PATH}:/ros2_ws
+    environment:
+      - DISPLAY=novnc:0.0
+    networks:
+      - x11
+    stdin_open: true
+    tty: true
+  novnc:
+    image: theasp/novnc:latest
+    environment:
+      - DISPLAY_WIDTH=1728
+      - DISPLAY_HEIGHT=972
+    ports:
+      - "8080:8080"
+    networks:
+      - x11
+    restart: on-failure
+networks:
+  x11: 
