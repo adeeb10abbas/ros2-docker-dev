@@ -1,4 +1,4 @@
-# rviz2-docker-mac
+# ros2-docker-dev
 
 To build the image, save the Dockerfile and run the following command in the same directory:
 
