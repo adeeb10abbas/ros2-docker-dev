@@ -42,5 +42,6 @@ RUN if [ "$ARCH" = "arm64" ] ; then \
         install_bazel "arm64" \
     ; fi
 
+RUN mkdir -p /ros2ws/src
 # Set the entrypoint to source ROS setup.bash and run a bash shell
-CMD [ "source /opt/ros/humble/setup.bash", "/bin/bash"]
+CMD ["/bin/bash"]

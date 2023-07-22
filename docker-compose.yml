@@ -14,7 +14,7 @@ services:
     image: ros_dev_image
     build: ./
     volumes: 
-      - ${ROS_PROJECT_PATH}:/ros2_ws
+      - ${ROS_PROJECT_PATH}:/ros2_ws/src/
     environment:
       - DISPLAY=novnc:0.0
     networks:
@@ -24,8 +24,8 @@ services:
   novnc:
     image: theasp/novnc:latest
     environment:
-      - DISPLAY_WIDTH=1728
-      - DISPLAY_HEIGHT=972
+      - DISPLAY_WIDTH=2560
+      - DISPLAY_HEIGHT=1440
     ports:
       - "8080:8080"
     networks:
