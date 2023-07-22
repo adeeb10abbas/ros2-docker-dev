@@ -25,7 +25,7 @@ ros_dev() {
     shift 2
 
     # Run docker-compose from the correct directory
-    cd $HOME/ros2-docker-dev && docker-compose up -d --build
+    cd "$SCRIPT_DIR" && docker-compose up -d --build
   done
 }
 ```
