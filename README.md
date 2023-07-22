@@ -9,7 +9,7 @@ This Docker-based project for running ROS1/2, including support for visualizatio
 
 ## Installation
 Add the following to your `~/.bashrc` or `~/.zshrc` file to use the ros_dev command 
-or run the provided setup.sh (only for `bashrc` users)
+or run the provided `setup.sh` (only for `bash` users)
 ```
 ros_dev() {
   # Check if the correct number of arguments were provided
