@@ -1,3 +1,9 @@
+## Author: Adeeb Abbas
+# This script sets up the ros_dev function in the bashrc file.
+
+# Get the absolute path to the script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Adds the following function to the bashrc file:
 
 echo "Adding ros_dev function to bashrc file"
@@ -16,9 +22,9 @@ echo 'ros_dev() {
     shift 2
 
     # Run docker-compose from the correct directory
-    cd $HOME/ros2-docker-dev && docker-compose up -d --build
+    cd "$SCRIPT_DIR" && docker-compose up -d --build
   done
 }
-' >> $HOME/.bashrc
+' >> "$HOME/.bashrc"
 
 echo "Done"
