@@ -16,9 +16,6 @@ To make it a super convenient development environment, after running the contain
 ## Installation
 Add the following to your `~/.bashrc` or `~/.zshrc` file to use the ros_dev command 
 or run the provided `setup.sh` (only for `bash` users)
-## Installation
-Add the following to your `~/.bashrc` or `~/.zshrc` file to use the ros_dev command 
-or run the provided setup.sh (only for `bashrc` users)
 ```
 ros_dev() {
   # Check if the correct number of arguments were provided
@@ -40,10 +37,7 @@ ros_dev() {
 ```
 ## Usage
 To run a single container with your ROS project, use the following:
-## Usage
-To run a single container with your ROS project, use the following:
 ```
-ros_dev my_ros_container /path/to/my/ros/project/src
 ros_dev my_ros_container /path/to/my/ros/project/src
 ```
 
@@ -63,24 +57,6 @@ It's much easier to get this working, so I recommend using this method if you're
 However, if you have an Nvidia GPU and you have figured out how to install the 
 nvidia-docker2 jazz. You can use rocker. You can also use Intel Integrated Graphics  with rocker, however, I haven't tested it. rocker is a tool that allows you to run  docker containers with hardware acceleration. To use rocker, with our containers run the following:
 `rocker --nvidia --x11 -- my_ros_container`
-If you have multiple workspaces you would like to concurrently build in a single 
-command with corresponding workspaces, use the following:
-`ros_dev my_ros_container1 /path/to/my/ros/project1 my_ros_container2 /path/to/my/ros/project2`
 
-The above command will build the container and mount the project directory to 
-the container's `/ros2_ws/src directory`. The container will be named my_ros_container 
-and will be run in the background. To access the container, use the following: 
-`docker exec -it my_ros_container /bin/bash`
-
-To access any desktop visualizations like RViz, go to your local vnc server: 
-http://localhost:8080/vnc.html. This should work for essentially all kinds of machines. 
-It's much easier to get this working, so I recommend using this method if you're just trying to get something going. 
-
-However, if you have an Nvidia GPU and you have figured out how to install the 
-nvidia-docker2 jazz. You can use rocker. You can also use Intel Integrated Graphics  with rocker, however, I haven't tested it. rocker is a tool that allows you to run  docker containers with hardware acceleration. To use rocker, with our containers run the following:
-`rocker --nvidia --x11 -- my_ros_container`
-
-This is under active development, so please feel free to contribute to the project. 
-If you have any questions, please open an issue on the GitHub repo. Thanks!
 This is under active development, so please feel free to contribute to the project. 
 If you have any questions, please open an issue on the GitHub repo. Thanks!
