@@ -30,18 +30,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-desktop=0.10.0-1* \
     && rm -rf /var/lib/apt/lists/*
 
-# Bazel Installer only needed for arm64 systems
-RUN install_bazel() { \
-    wget "https://github.com/bazelbuild/bazel/releases/download/6.2.0/bazel-6.2.0-linux-$1" && \
-    chmod 755 bazel-6.2.0-linux-$1 && \
-    mv bazel-6.2.0-linux-$1 /usr/bin/bazel; \
-}
-
-# Install Bazel for arm64 systems since install_prereqs.sh doesn't for non x86_64 systems
-RUN if [ "$ARCH" = "arm64" ] ; then \
-        install_bazel "arm64" \
-    ; fi
-
-RUN mkdir -p /ros2ws/src
 # Set the entrypoint to source ROS setup.bash and run a bash shell
 CMD ["/bin/bash"]
