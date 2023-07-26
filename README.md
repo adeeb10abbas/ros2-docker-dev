@@ -7,6 +7,12 @@ This Docker-based project for running ROS1/2, including support for visualizatio
  - Can visualize RViz, Gazebo, Intel RealSense Viewer, and other GUIs via VNC or X11 hardware acceleration
  - Supports both Nvidia and Intel Integrated Graphics
 
+Here's a quick preview of ROS2 Humble + RViz on M1 Macbook Pro - 
+
+https://github.com/adeeb10abbas/ros2-docker-dev/assets/38449494/0f008e10-712f-4a6f-a202-ccaeb794a1cd
+
+To make it a super convenient development environment, after running the container. [Just open up VSCode and click on `Attach to a Running Container`](https://code.visualstudio.com/docs/devcontainers/attach-container)
+
 ## Installation
 Add the following to your `~/.bashrc` or `~/.zshrc` file to use the ros_dev command 
 or run the provided `setup.sh` (only for `bash` users)
