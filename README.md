@@ -15,7 +15,7 @@ To make it a super convenient development environment, after running the contain
 
 ## Installation
 Add the following to your `~/.bashrc` or `~/.zshrc` file to use the ros_dev command 
-or run the provided `setup.sh` (only for `bash` users)
+or run the provided `setup.sh` (only for `bash` users). Note - change `$SCRIPT-DIR` to the path of the cloned repo. The `setup.bash` would do this automatically for `bash` users. 
 ```
 ros_dev() {
   # Check if the correct number of arguments were provided
