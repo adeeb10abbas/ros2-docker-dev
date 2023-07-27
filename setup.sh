@@ -17,8 +17,8 @@ echo 'ros_dev() {
 
   while (( $# >= 2 )); do
     # Set environment variables
-    ROS_DEV_CONTAINER_NAME=$1
-    ROS_PROJECT_PATH=$2
+    export ROS_DEV_CONTAINER_NAME=$1
+    export ROS_PROJECT_PATH=$2
     shift 2
 
     # Run docker-compose from the correct directory
