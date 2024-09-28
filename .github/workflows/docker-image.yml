@@ -6,7 +6,7 @@ on:
       - main  # 你可以根据需要更改为你的主分支
   pull_request:
     branches:
-      - main  # 你可以根据需要更改为你的主分支
+      - main  # 你可以根据需要更改为你的主分支x
 
 jobs:
   build:
