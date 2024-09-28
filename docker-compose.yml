@@ -11,7 +11,7 @@ version: '3.8'
 services:
   ros_dev_env:
     container_name: ${ROS_DEV_CONTAINER_NAME}
-    image: ghcr.io/imdingtalk/ros2-docker-dev:master
+    image: ghcr.io/imdingtalk/ros2-docker-dev:ros-noetic
     build: ./
     volumes: 
       - ${ROS_PROJECT_PATH}:/ros2_ws/src/

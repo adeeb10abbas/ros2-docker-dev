@@ -95,13 +95,15 @@ source ~/.zshrc
 
 ```
 # ros_dev  <容器名>  <代码目录>
-ros_dev ros2 $(pwd)
+export ROS_DEV_CONTAINER_NAME=ros
+export ROS_PROJECT_PATH=$(pwd)
+ros_dev ros $(pwd)
 ```
 
 进入容器，加载ROS入口点脚本,运行RViz2可视化工具
 
 ```
-docker exec -it ros2 bash
+docker exec -it ros bash
 source  ros_entrypoint.sh   rviz
 ```
 
