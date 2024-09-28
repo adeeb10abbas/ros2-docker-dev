@@ -22,7 +22,7 @@ echo 'ros_dev() {
     shift 2
 
     # Run docker-compose from the correct directory
-    cd "$SCRIPT_DIR" && docker-compose up -d --build
+    cd "$SCRIPT_DIR" && docker-compose up -d 
   done
 }
 ' >> "$HOME/.bashrc"

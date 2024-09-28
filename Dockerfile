@@ -1,5 +1,7 @@
 # Use the official ROS image as the base image
-FROM ros:humble-ros-core-jammy
+# FROM ros:humble-ros-core-jammy
+
+FROM ros:noetic-ros-core-focal
 
 # Set shell for running commands
 SHELL ["/bin/bash", "-c"]

@@ -60,3 +60,54 @@ nvidia-docker2 jazz. You can use rocker. You can also use Intel Integrated Graph
 
 This is under active development, so please feel free to contribute to the project. 
 If you have any questions, please open an issue on the GitHub repo. Thanks!
+
+
+
+
+首先，需要加载您的Zsh配置文件。
+将以下内容添加到zshrc的尾部
+```
+ros_dev() {
+  # Check if the correct number of arguments were provided
+  if (( $# % 2 != 0 )); then
+    echo "Usage: ros_dev <container_name1> <project_path1> [<container_name2> <project_path2> ...]"
+    return 1
+  fi
+
+  while (( $# >= 2 )); do
+    # Set environment variables
+    ROS_DEV_CONTAINER_NAME=$1
+    ROS_PROJECT_PATH=$2
+    shift 2
+
+    # Run docker-compose from the correct directory
+    cd "$SCRIPT_DIR" && docker-compose up -d 
+  done
+}
+```
+然后加载配置文件
+```sh
+source ~/.zshrc
+```
+
+接下来，运行ROS2 Docker开发环境。
+
+
+```
+# ros_dev  <容器名>  <代码目录>
+ros_dev ros2 $(pwd)
+```
+
+进入容器，加载ROS入口点脚本
+
+```
+docker exec -it ros2 bash
+source ros_entrypoint.sh
+```
+
+最后，运行RViz2可视化工具。
+
+
+```bash
+rviz2
+```
