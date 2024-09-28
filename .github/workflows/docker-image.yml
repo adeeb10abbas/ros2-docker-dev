@@ -1,17 +1,38 @@
-name: docker image build
+name: Build and Push Docker Image to GHCR
 
 on:
   push:
-    branches: [ "**" ]
-
+    branches:
+      - main  # 你可以根据需要更改为你的主分支
+  pull_request:
+    branches:
+      - main  # 你可以根据需要更改为你的主分支
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to GHCR
+      run: echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Extract Docker metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ghcr.io/${{ github.repository }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: v1
+        labels: ${{ steps.meta.outputs.labels }}
