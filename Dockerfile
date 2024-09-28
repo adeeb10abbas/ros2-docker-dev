@@ -32,5 +32,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-noetic-desktop\
     && rm -rf /var/lib/apt/lists/*
 
+ENTRYPOINT ["/ros_entrypoint.sh"]
 # Set the entrypoint to source ROS setup.bash and run a bash shell
-CMD ["/bin/bash"]
+CMD ["roscore"]
