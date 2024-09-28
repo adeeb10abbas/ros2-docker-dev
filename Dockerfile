@@ -29,7 +29,7 @@ RUN colcon mixin add default \
     colcon metadata update
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-humble-desktop=0.10.0-1* \
+    ros-noetic-desktop\
     && rm -rf /var/lib/apt/lists/*
 
 # Set the entrypoint to source ROS setup.bash and run a bash shell
