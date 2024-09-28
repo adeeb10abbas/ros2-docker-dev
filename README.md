@@ -98,16 +98,13 @@ source ~/.zshrc
 ros_dev ros2 $(pwd)
 ```
 
-进入容器，加载ROS入口点脚本
+进入容器，加载ROS入口点脚本,运行RViz2可视化工具
 
 ```
 docker exec -it ros2 bash
-source ros_entrypoint.sh
+source  ros_entrypoint.sh   rviz
 ```
 
-最后，运行RViz2可视化工具。
+最后打开本地浏览器查看
 
-
-```bash
-rviz2
-```
+http://localhost:8080/
