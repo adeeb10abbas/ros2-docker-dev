@@ -5,6 +5,8 @@ on:
     branches:
       - main  # 你可以根据需要更改为你的主分支
       - master
+    tags:
+      - '*'
   pull_request:
     branches:
       - main  # 你可以根据需要更改为你的主分支x
