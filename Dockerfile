@@ -3,7 +3,7 @@
 
 FROM ros:noetic-ros-core-focal
 
-# Set shell for running commands
+# Set shell for running commandsx
 SHELL ["/bin/bash", "-c"]
 
 # install bootstrap tools
