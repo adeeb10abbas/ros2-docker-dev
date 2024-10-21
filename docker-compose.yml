@@ -7,7 +7,6 @@
 #
 # Author: Adeeb Abbas
 
-version: '3.8'
 services:
   ros_dev_env:
     container_name: ${ROS_DEV_CONTAINER_NAME}
