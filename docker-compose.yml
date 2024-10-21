@@ -13,7 +13,7 @@ services:
     image: ${ROS_DEV_CONTAINER_NAME} ## For now, the names are the same. Can change if ever a need arises.
     build: ./
     volumes: 
-      - ${ROS_PROJECT_PATH}:/ros2_ws/src/
+      - ${ROS_PROJECT_PATH}:/ros1_ws/src/
     environment:
       - DISPLAY=novnc:0.0
     networks:
