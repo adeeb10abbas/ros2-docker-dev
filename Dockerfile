@@ -1,7 +1,9 @@
 # Use the official ROS image as the base image
-FROM ros:humble-ros-core-jammy
+# FROM ros:humble-ros-core-jammy
 
-# Set shell for running commands
+FROM ros:noetic-ros-core-focal
+
+# Set shell for running commandsx
 SHELL ["/bin/bash", "-c"]
 
 # install bootstrap tools
@@ -27,8 +29,9 @@ RUN colcon mixin add default \
     colcon metadata update
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-humble-desktop=0.10.0-1* \
+    ros-noetic-desktop\
     && rm -rf /var/lib/apt/lists/*
 
+ENTRYPOINT ["/ros_entrypoint.sh"]
 # Set the entrypoint to source ROS setup.bash and run a bash shell
-CMD ["/bin/bash"]
+CMD ["roscore"]

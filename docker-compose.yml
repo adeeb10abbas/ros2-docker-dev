@@ -10,7 +10,7 @@
 services:
   ros_dev_env:
     container_name: ${ROS_DEV_CONTAINER_NAME}
-    image: ${ROS_DEV_CONTAINER_NAME} ## For now, the names are the same. Can change if ever a need arises.
+    image: ghcr.io/imdingtalk/ros2-docker-dev:ros-noetic
     build: ./
     volumes: 
       - ${ROS_PROJECT_PATH}:/ros2_ws/src/
