@@ -1,14 +1,13 @@
+#!/bin/bash
+
 ## Author: Adeeb Abbas
 # This script sets up the ros_dev function in the bashrc file.
 
 # Get the absolute path to the script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Adds the following function to the bashrc file:
-
-echo "Adding ros_dev function to bashrc file"
-
-echo 'ros_dev() {
+# Define the function
+ros_dev() {
   # Check if the correct number of arguments were provided
   if (( $# % 2 != 0 )); then
     echo "Usage: ros_dev <container_name1> <project_path1> [<container_name2> <project_path2> ...]"
@@ -25,6 +24,21 @@ echo 'ros_dev() {
     cd "$SCRIPT_DIR" && docker-compose up -d --build
   done
 }
-' >> "$HOME/.bashrc"
+
+if [[ $SHELL == "/bin/bash" ]]; then
+  shell_config_file="$HOME/.bashrc"
+elif [[ $SHELL == "/bin/zsh" ]]; then
+  shell_config_file="$HOME/.zshrc"
+else
+  echo "Unsupported shell"
+  exit 1
+fi
+
+if ! grep -q "ros_dev ()" "$shell_config_file"; then
+  declare -f ros_dev >> "$shell_config_file"
+  echo "ros_dev function added to $shell_config_file"
+else
+  echo "ros_dev function already exists in $shell_config_file"
+fi
 
 echo "Done"
